@@ -60,12 +60,12 @@ const AllRooms = () => {
                         <img
                             onClick={() => { navigate(`/rooms/${room._id}`); scrollTo(0, 0) }}
                             src={room.images[0]}
-                            alt="hotel"
+                            alt="hotel-img"
                             title="View Room Details"
                             className='max-h-65 md:w-1/2 rounded-xl shadow-lg object-cover cursor-pointer'
                         />
 
-                        <div className='md:w-1/2 flex flex-col gap-4'>
+                        <div className='md:w-1/2 flex flex-col gap-2'>
                             <p className='text-gray-500'>{room.hotel.city}</p>
 
                             <p className='text-gray-500 text-3xl font-playfair cursor-pointer'>{room.hotel.name}</p>

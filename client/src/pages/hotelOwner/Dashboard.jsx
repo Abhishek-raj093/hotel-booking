@@ -3,7 +3,7 @@ import Title from "../../components/title.jsx";
 import {assets, dashboardDummyData as dashboardData, dashboardDummyData} from "../../assets/assets.js";
 
 const Dashboard = () => {
-    const [dashboard, setDashboard] = useState(dashboardDummyData);
+    const [dashboardData, setDashboardData] = useState(dashboardDummyData);
     return (
         <div>
             <Title align='left' font='outfit' title='Dashboard' subTitle='Monitor your room listings, track bookings and analyse revenue-all in one place. Stay updated with real-time insights to ensure smooth operations.'/>

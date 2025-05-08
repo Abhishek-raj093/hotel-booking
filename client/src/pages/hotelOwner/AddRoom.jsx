@@ -8,7 +8,7 @@ const AddRoom = () => {
         1: null,
         2: null,
         3: null,
-        4: null,
+        4: null
     })
     const [inputs, setInputs] = useState({
         roomType: ' ' ,
@@ -25,14 +25,15 @@ const AddRoom = () => {
     return (
         <form>
             <Title align='left' font='outfit' title='Add Room' subTitle='Fill in the detials carefully and accurate room details, pricing and amenities, to enhance the user booking experience.'/>
-            <p className='text-gray-800 mt-10'></p>
+            {/* Upload Area For Images */}
+            <p className='text-gray-800 mt-10'>Images</p>
                 <div className='grid grid-cols-2 sm:flex gap-4 my-2 flex-wrap'>
 
 
-                {Object.keys(images).map(key => (
+                {Object.keys(images).map((key) => (
                     <label htmlFor={`roomImage${key}`} key={key}>
                         <img className='max-h-13 cursor-pointer opacity-80' src={images[key] ? URL.createObjectURL(images[key]) : assets.uploadArea} alt=''/>
-                        <input type='text' accept='image/*' id={`roomImage${key}`} hidden onChange={e=> setImages({...images, [key]:e.target.files[0] })}/>
+                        <input type='file' accept='image/*' id={`roomImage${key}`} hidden onChange={e=> setImages({...images, [key]:e.target.files[0] })}/>
                     </label>
                 ))}
 

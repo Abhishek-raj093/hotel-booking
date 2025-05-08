@@ -6,7 +6,7 @@ import {assets, cities} from "../assets/assets.js";
 const Hero = () => {
     return (
         <div className="flex flex-col items-start justify-center px-6 md:px-16 lg:px-32 text-white bg-no-repeat bg-cover bg-center h-screen" style={{ backgroundImage: `url(${heroImage})` }} >
-            <p className="bg-[#49B9ff]/50 px-3.6 py-1 rounded-full mt-20">
+            <p className="bg-[#49B9ff]/50 px-3.5 py-1 rounded-full mt-20">
                 The Ultimate Hotel Experience
             </p>
             <h1 className="font-playfair text-2xl md:text-5xl md:text-[56px] md:leading-[56px] font-bold md:font-extrabold max-w-xl mt-4">
@@ -55,7 +55,7 @@ const Hero = () => {
                 </div>
 
                 <button className='flex items-center justify-center gap-1 rounded-md bg-black py-3 px-4 text-white my-auto cursor-pointer max-md:w-full max-md:py-1' >
-                    <img src={assets.searchIcon} alt='' className="h-7"/>
+                    <img src={assets.searchIcon} alt='searchIcon' className="h-7"/>
                     <span>Search</span>
                 </button>
             </form>

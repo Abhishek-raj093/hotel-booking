@@ -22,7 +22,7 @@ const Sidebar = () => {
                 <NavLink
                     to={item.path}
                     key={index}
-                    end={item.path === "/owner"} // ✅ Use boolean for `end`
+                    end="/owner" // ✅ Use boolean for `end`
                     className={({ isActive }) =>
                         `flex items-center py-3 px-4 md:px-8 gap-3 ${
                             isActive

@@ -30,7 +30,7 @@ const MyBookings = () => {
                                     </span>
                                 </div>
                                 <div className='flex items-center gap-1 text-sm text-gray-500'>
-                                    <img src={assets.guestsIcon} alt="hotelimage"/>
+                                    <img src={assets.guestsIcon} alt="guests-icon"/>
                                     <span>
                                         Guests: {booking.guests}
                                     </span>

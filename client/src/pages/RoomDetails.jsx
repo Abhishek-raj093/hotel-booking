@@ -63,8 +63,10 @@ const RoomDetails = () => {
                     ))}
                 </div>
             </div>
+
+            {/* Room Details Section */}
             <div className='flex flex-col md:flex-row md:justify-between mt-10'>
-                <div>
+                <div className='flex flex-col'>
                     <h1 className='text-3xl md:text-4xl font-playfair'>{room.name}
                         Experience Luxury Like Never Before
                     </h1>
@@ -78,7 +80,7 @@ const RoomDetails = () => {
                     </div>
                 </div>
 
-                <p>
+                <p className='text-2xl font-medium'>
                     ${room.pricePerNight}/night
                 </p>
             </div>
@@ -91,7 +93,7 @@ const RoomDetails = () => {
                         </label>
                         <input type='date' id='checkInDate' placeholder='Check-In'
                                className='w-full rounded border border-gray-300 px-3 py-2 mt-1.5 outline-none'
-                               required=''/>
+                               required/>
                     </div>
                     <div className=' w-px h-15 bg-gray-300/70 max-md:hidden'>
                     </div>
@@ -122,6 +124,7 @@ const RoomDetails = () => {
                 </button>
             </form>
 
+            {/* Common Specifications */}
             <div className='mt-25 space-y-4'>
                 {roomCommonData.map((spec, index) =>(
                     <div key={index} className='flex items-start gap-2'>
@@ -142,11 +145,13 @@ const RoomDetails = () => {
                     Guests will be allocated on the ground floor according to availability. You get a comfortable two bedroom apartment has a true city feeling. The price quoted is for two guest, at the guest slot please mark the number of guests to get the exact price for groups. The Guests will be allocated ground floor according to the availability.
                 </p>
             </div>
+
+            {/* Host Section */}
             <div className='fex flex-col items-start gap-4'>
                 <div className='flex gap-4'>
                     <img src={room.hotel.owner.image} alt="host" className='h-14 w-14 md:h-18 md:w-18 rounded-full'/>
                     <div>
-                        <p>
+                        <p className='text-xl md:text-xl'>
                             Hosted by {room.hotel.name}
                         </p>
                         <div className='flex items-center mt-1'>
