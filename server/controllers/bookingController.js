@@ -9,7 +9,7 @@ const checkAvailability = async ({ checkInDate, checkOutDate, room })=>{
         const bookings = await Booking.find({
             room,
             checkInDate: {$lte: checkOutDate},
-            checlOutDate: {$gte: checkInDate},
+            checkOutDate: {$gte: checkInDate},
         });
         const isAvailable = bookings.length === 0;
         return isAvailable;
@@ -85,7 +85,7 @@ export const getUserBookings = async (req, res) => {
         const bookings = await Booking.find({user}).populate("room hotel").sort({createdAt: -1})
         res.json({success: true, bookings})
     } catch (error) {
-        res.json({ success:false, message: "Failed to fetch bookings" })
+        res.json({ success: false, message: "Failed to fetch bookings" })
     }
 };
 

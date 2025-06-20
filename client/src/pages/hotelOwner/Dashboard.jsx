@@ -1,9 +1,37 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Title from "../../components/title.jsx";
-import {assets, dashboardDummyData as dashboardData, dashboardDummyData} from "../../assets/assets.js";
+import {assets} from "../../assets/assets.js";
+import { useAppContext } from '../../context/AppContext.jsx';
 
 const Dashboard = () => {
-    const [dashboardData, setDashboardData] = useState(dashboardDummyData);
+
+    const { currency, user, getToken, toast, axios } = useAppContext();
+
+    const [dashboardData, setDashboardData] = useState({
+        bookings: [],
+        totalBookings: 0,
+        totalRevenue: 0,
+    });
+
+    const fetchDashboardData = async ()=>{
+        try {
+            const { data } = await axios.get('/api/bookings/hotel', {headers: {Authorization: `Bearer ${await getToken()}`}})
+            if (data.success) {
+                setDashboardData(data.dashboardData)
+            }else{
+                toast.error(data.message)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    useEffect(()=>{
+        if (user) {
+            fetchDashboardData();
+        }
+    },[user])
+
     return (
         <div>
             <Title align='left' font='outfit' title='Dashboard' subTitle='Monitor your room listings, track bookings and analyse revenue-all in one place. Stay updated with real-time insights to ensure smooth operations.'/>
@@ -15,7 +43,7 @@ const Dashboard = () => {
                             Total Bookings
                         </p>
                         <p className='text-neutrtal-400 text-base'>
-                            {dashboardDummyData.totalBookings}
+                            {dashboardData.totalBookings}
                         </p>
                     </div>
                 </div>
@@ -26,7 +54,7 @@ const Dashboard = () => {
                             Total Revenue
                         </p>
                         <p className='text-neutral-400 text-base'>
-                        ${dashboardDummyData.totalRevenue}
+                        {currency}{dashboardData.totalRevenue}
                         </p>
                     </div>
                 </div>
@@ -55,7 +83,7 @@ const Dashboard = () => {
                                     {item.room.roomType}
                                 </td>
                                 <td className='py-3 px-4 text-gray-700 border-t border-gray-300'>
-                                    $ {item.totalPrice}
+                                    {currency} {item.totalPrice}
                                 </td>
                                 <td className='py-3 px-4  border-t border-gray-300 flex'>
                                     <button className={`py-1 px-3 text-xs rounded-full mx-auto ${item.isPaid ? 'bg-green-200 text-green-600' : 'bg-red-200 text-yellow-600'}`}>
